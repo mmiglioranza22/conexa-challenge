@@ -1,8 +1,24 @@
 .main {
   display: flex;
   flex-direction: row;
-  padding: 6rem;
+  padding: 2rem;
   min-height: 100vh;
+  background-image: url('../../public/darth-vader.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0px -25px 90px 90px #000;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.message {
+  max-width: 400px;
 }
 
 
@@ -17,3 +33,31 @@
 }
 
 
+
+.button {
+	background: transparent;
+	height: fit-content;
+	color: inherit;
+	outline: none;
+	appearance: none;
+	font-size: 1.5rem;
+	font-family: inherit;
+	border: 1px solid #FFF;
+	border-radius:  5px;
+	cursor: pointer;
+	padding: 15px;
+	position: relative;
+}
+
+.button:hover {
+	text-decoration: underline;
+	background-color: rgb(34,255,89);
+	color: #000;
+	border: 1px solid #000;
+
+
+	transition-property: background-color,color, border;
+
+    transition-duration: .15s;
+
+}
