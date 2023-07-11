@@ -1,19 +1,21 @@
-import Image from 'next/image'
+
 import styles from './page.module.css'
 import GreetingMsg from '@/components/GreetingMsg'
 import Button from '@/components/Button'
+import Link from 'next/link'
 
-export default function Home() {
+export default function Landing() {
 
   return (
     <main className={`${styles.main} fade_in`}>
       <div className={styles.container}>
         <GreetingMsg className={`${styles.message} fade_in`}>
-          <p>Greetings soldier</p>
           <p>Lord Vader was expecting you</p>
         </GreetingMsg>
         <Button className={`${styles.button} fade_in`}>
+          <Link href={'/home'}> 
           Execute order
+          </Link>
         </Button>
       </div>
     </main>
