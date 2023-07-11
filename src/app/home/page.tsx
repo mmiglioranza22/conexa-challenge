@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import Button from '@/components/Button'
 import ApiClient from '@/utils/apiClient'
 import { useState } from 'react'
+import RadioInput from '@/components/RadioInput'
 
 
 export default function Home() {
@@ -20,17 +21,7 @@ const [query, setQuery] = useState<string>('')
     'vehicles'
   ]
 
-  const navLinks =  ROUTES.map((el: string) => (
-    // <Button className={styles.button} key={el}>
-    //   {/* <Link href={`/${el}`}> */}
-    //     {el.toUpperCase()}
-    //   {/* </Link> */}
-    // </Button>
-<div key={el}>
-  <input type="radio" name="filter" id={el} value={el} />
-  <label htmlFor={el}>{el.toUpperCase()}</label>
-</div>
-  ))
+  const navLinks =  ROUTES.map((el: string) => <RadioInput key={el} value={el} />)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
