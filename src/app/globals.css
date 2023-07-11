@@ -30,3 +30,45 @@ a {
     opacity: 1;
   }
 }
+
+
+/* https://codepen.io/w3programmings/pen/zzRKpy */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:focus {
+  outline: none; 
+}
+
+input[type="radio"]:hover + label,
+input[type="radio"]:checked + label {
+  background-color: #1FBED6;
+  text-decoration: underline;
+	background-color: rgb(34,255,89);
+	color: #000;
+	border: 1px solid #000;
+	transition-property: background-color,color, border;
+  transition-duration: .15s;
+}
+
+label {
+  display: flex;
+  min-width: 8rem;
+  justify-content: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+	color: inherit;
+	outline: none;
+	font-size: 1rem;
+	font-family: inherit;
+	border: 1px solid #FFF;
+	border-radius:  5px;
+	cursor: pointer;
+	padding: 1rem;
+  margin: 2px;
+	position: relative;
+  opacity: 1;
+}
