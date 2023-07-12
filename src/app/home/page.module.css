@@ -41,7 +41,7 @@ border: none;
   outline: none
 }
 
-.button {
+.button .card {
 	background: transparent;
 	height: fit-content;
 	color: inherit;
@@ -58,6 +58,7 @@ border: none;
   opacity: 1;
 }
 
+.card:hover,
 .button:hover,
 .button:visited {
 	text-decoration: underline;
@@ -90,9 +91,28 @@ border: none;
 
 .card_container {
   display: flex;
-  justify-content: center;
-
+  justify-content: space-evenly;
+  max-width: 100%;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  align-items: space-evenly;
 }
+
+.card {
+  margin: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  border: none;
+  padding: 1rem
+  
+}
+
+.card:hover {
+  border: none
+}
+
+
 
 @keyframes rotation {
   from {

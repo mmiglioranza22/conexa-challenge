@@ -5,6 +5,8 @@ import RadioInput from '@/components/RadioInput'
 import Button from '@/components/Button'
 import Loading from './loading'
 import { SwapiResponse } from '@/types/types'
+import { Card } from '@/components/Card'
+import { CardContainer } from '@/components/CardContainer'
 // import { CardContainer } from '@/components/CardContainer'
 
 async function getData(url:string): Promise<any> {
@@ -72,13 +74,15 @@ const [isLoading, setLoading] = useState<boolean>(false)
   const normalizeData = (data: any, type: string) => {
     switch(type as SwapiResponse) {
       case 'films':
-        return (<div>Title: {data.title}, Episode: {data.episode_id}</div>)
+        return (
+        <Card className={styles.card}>Title: {data.title}</Card>
+        )
       case 'people':
       case 'starships':
       case 'vehicles':
       case 'species':
       case 'planets':
-        return (<div>Name: {data.name}</div>)
+        return (<Card className={styles.card}>Name: {data.name}</Card>)
     }
   } 
 
@@ -117,7 +121,7 @@ const [isLoading, setLoading] = useState<boolean>(false)
           </CardContainer> */}
           <div className={styles.card_container}>
             {isLoading ? <Loading className={styles.loading} /> 
-              :<div>{fetchData}</div>}
+              :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
           </div>
         </div>
       </div>

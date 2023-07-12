@@ -1,18 +1,6 @@
-import { SwapiResponse } from "@/types/types";
-
-
-export async function Card({ children, type }: { children: React.ReactNode, type: SwapiResponse }) {
-
- const types = {
-  
- }
-
-  switch(type) {
-
-  }
+export function Card({ children, className }: { children: React.ReactNode, className: string }) {
   return (
-    <div>
-      
+    <div className={className}>
       {children}
     </div>
   )
