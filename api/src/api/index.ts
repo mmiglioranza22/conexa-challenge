@@ -2,14 +2,14 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
 // import SwapiResponse from '../types';
 
-const ApliClient: AxiosInstance = axios.create({
+const ApiClient: AxiosInstance = axios.create({
   baseURL: 'https://swapi.dev/api/',
   timeout: 5000
 });
 
 export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
   try {
-    const response = await ApliClient(config)
+    const response = await ApiClient(config)
     return response.data
   } catch (error) {
     console.error(error)

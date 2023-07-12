@@ -1,6 +1,13 @@
 import { Request, Response, Router } from 'express';
-import axios, {AxiosError, AxiosResponse, AxiosRequestConfig, AxiosInstance} from 'axios'
+import { AxiosRequestConfig } from 'axios'
 import { apiRequest } from './api';
+
+// SWAPI design allows for all routes to be requested similarly -> /resourceType/id,
+// hence only one generic router was implemented.
+// Had this API being different, or challenges requirements asked for other actions (POST, DELETE),
+// there would had been a specific router for each route since data manipulation would have required it
+
+// This solution is exclusively adopted for this challenge, it is not a good practice for production-ready solutions
 
 const router = Router();
 router
@@ -10,6 +17,8 @@ router
 			method: 'GET',
 			url: req.params['0']
 		};
+		// eslint-disable-next-line no-console
+		console.log({params: req.params})
 		res.send(await apiRequest(config))
   });
 
