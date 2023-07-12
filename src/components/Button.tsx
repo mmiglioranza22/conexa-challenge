@@ -1,11 +1,12 @@
 
-export default function Button({ children, className, type }:
+export default function Button({ children, className, type, onClick }:
   { 
     children: React.ReactNode, 
     className: string,
-    type:  'submit' | 'button'
+    type:  'submit' | 'button',
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | any
   }) {
   return (
-    <button type={type} className={className}>{children}</button>
+    <button type={type} className={className} onClick={onClick}>{children}</button>
   )
 }

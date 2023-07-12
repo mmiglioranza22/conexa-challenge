@@ -1,6 +1,11 @@
-export function Card({ children, className }: { children: React.ReactNode, className: string }) {
+export function Card({ children, className, onClick }: 
+  { 
+    children: React.ReactNode,
+    className: string,
+    onClick?: any
+  }) {
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
       {children}
     </div>
   )

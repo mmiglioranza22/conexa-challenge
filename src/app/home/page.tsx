@@ -60,6 +60,19 @@ const [isLoading, setLoading] = useState<boolean>(false)
     setFilter(value)
   }
 
+  const toggleDialog = (id: string) => {
+    // eslint-disable-next-line no-console
+    console.log('toggle')
+    const dialog = document.getElementById(`${id}`) as HTMLDialogElement
+    // eslint-disable-next-line no-console
+    console.log({dialog})
+    if (dialog?.open) {
+      dialog.close()
+    } else {
+      dialog?.showModal()
+    }
+  }
+
   const filterOptions = ROUTES.map((value: string) => {
     return (
       <RadioInput 
@@ -75,14 +88,28 @@ const [isLoading, setLoading] = useState<boolean>(false)
     switch(type as SwapiResponse) {
       case 'films':
         return (
-        <Card className={styles.card}>Title: {data.title}</Card>
+          <>
+            <Card className={styles.card} onClick={() => toggleDialog(data.title)}>Title: {data.title}</Card>
+            <dialog id={data.title}>
+              {data.title}
+              <Button type='button' className={''} onClick={() => toggleDialog(data.title)}>Close</Button>
+            </dialog>
+          </>
         )
       case 'people':
       case 'starships':
       case 'vehicles':
       case 'species':
       case 'planets':
-        return (<Card className={styles.card}>Name: {data.name}</Card>)
+        return (
+          <>
+            <Card className={styles.card} onClick={() => toggleDialog(data.name)}>Name: {data.name}</Card>
+            <dialog id={data.name}>
+              {data.title}
+              <Button type='button' className={''} onClick={() => toggleDialog(data.name)}>Close</Button>
+            </dialog>
+          </>
+          )
     }
   } 
 

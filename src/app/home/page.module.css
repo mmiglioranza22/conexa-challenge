@@ -32,9 +32,12 @@
 
 .radio_button {
 display: flex;
+flex-wrap: wrap;
 background: transparent;
 color: #FFF;
 border: none;
+justify-content: center;
+align-items: center;
 
 }
 .radio_button:focus {
