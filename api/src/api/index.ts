@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
 
 const ApiClient: AxiosInstance = axios.create({
   baseURL: 'https://swapi.dev/api/',
-  timeout: 5000
+  // timeout: 000
 });
 
 export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {

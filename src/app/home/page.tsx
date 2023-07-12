@@ -1,27 +1,16 @@
 'use client'
 import { useState } from 'react'
-import Link from 'next/link'
 import styles from './page.module.css'
-import Button from '@/components/Button'
-import ApiClient from '@/utils/apiClient'
 import RadioInput from '@/components/RadioInput'
+import Button from '@/components/Button'
 
 async function getData(url:string) {
   const res = await fetch(url)
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-  // eslint-disable-next-line no-console
-  console.log({res})
- 
-  // Recommendation: handle errors
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
   }
- 
   return res.json()
 }
-
 
 export default function Home() {
 
@@ -37,12 +26,10 @@ const [query, setQuery] = useState<string>('')
     'vehicles'
   ]
 
-  const filterOptions =  ROUTES.map((el: string) => <RadioInput key={el} value={el} />)
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
 
-    let url: string = `http:/localhost:8080/${filter}`
+    let url: string = `/api/${filter}`
     
     if (query.length > 0) {
       url = `${url}/?search=${query}`
@@ -59,24 +46,44 @@ const [query, setQuery] = useState<string>('')
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-
     setQuery(e.target.value)
-
   }
 
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setFilter(e.target.value)
+  const handleRadio = (value : string): void => {
+    setFilter(value)
   }
+
+  const filterOptions = ROUTES.map((value: string) => {
+   return (
+    <RadioInput 
+      key={value} 
+      checked={value === filter} 
+      value={value} 
+      onChange={() => handleRadio(value)}
+      // onClick={handleSubmit} 
+    />)
+  })
+
 
   return (
     <main className={styles.main}>
       <div className={styles.nav}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.links}>
-            {filterOptions} 
+            <Button type="submit" className={styles.radio_button}>{filterOptions}</Button>
           </div>
-          <input className={styles.input} onChange={handleChange} value={query} placeholder='Search...' type="text" />
+
+          {/* <input
+            type="text"
+            placeholder='Search...'
+            className={styles.input}
+            onChange={handleChange}
+            value={query}
+          /> */}
         </form>
+      </div>
+      <div>
+
       </div>
     </main>
   )

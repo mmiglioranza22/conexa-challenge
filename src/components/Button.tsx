@@ -1,6 +1,11 @@
 
-export default function Button({ children, className }: { children: React.ReactNode, className: string }) {
+export default function Button({ children, className, type }:
+  { 
+    children: React.ReactNode, 
+    className: string,
+    type:  'submit' | 'button'
+  }) {
   return (
-    <button className={className}>{children}</button>
+    <button type={type} className={className}>{children}</button>
   )
 }
