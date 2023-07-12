@@ -116,7 +116,8 @@ const [isLoading, setLoading] = useState<boolean>(false)
           {/* <CardContainer type={filter} className={''}>
           </CardContainer> */}
           <div className={styles.card_container}>
-            {isLoading ? <Loading /> : fetchDataMemo}
+            {isLoading ? <Loading className={styles.loading} /> 
+              :<div>{fetchData}</div>}
           </div>
         </div>
       </div>
