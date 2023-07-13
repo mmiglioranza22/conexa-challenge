@@ -33,6 +33,10 @@ _Prerequisites: Node.js should be installed and configured in your machine._
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the front end app.
 Server will run in [http://localhost:8080](http://localhost:8080), you can make requests with Postman.
 
+## Tests
+
+Tests remain very basic, I could not work around handling asynchronisity in Jest / RTL. I will be working on this eventually.
+
 
 ## Deployment
 
