@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 import styles from './page.module.css'
 import RadioInput from '@/components/RadioInput'
 import Button from '@/components/Button'
@@ -8,6 +8,7 @@ import { SwapiCategories } from '@/types/types'
 import { Card } from '@/components/Card'
 import { CardContainer } from '@/components/CardContainer'
 import { CardDetail } from '@/components/CardDetail'
+import { log } from 'console'
 
 async function getData(url:string): Promise<any> {
   const res = await fetch(url)
@@ -19,10 +20,10 @@ async function getData(url:string): Promise<any> {
 
 export default function Home() {
   const [filter, setFilter] = useState<string>('')
-  const [query, setQuery] = useState<string>('')
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(false)
-  const [page, setPage] = useState<string>('')
+  const [nextPage, setNextPage] = useState<number>(1)
+  const [prevPage, setPrevPage] = useState<number>(0)
 
   const ROUTES: SwapiCategories[] = [
     'films',
@@ -40,23 +41,19 @@ export default function Home() {
 
     let url: string = `${server}/api/${filter}`
     
-    // if (query.length > 0) {
-    //   url = `${url}/?search=${query}`
-    // }
-
     setLoading(() => true)
     const data = await getData(url)
     setData(() => data )
     if (data.next) {
-      setPage((data.next).split('?')[1])
+      setNextPage(() => Number((data.next).split('=')[1]))
+      // eslint-disable-next-line no-console
+      console.log({nextPage})
+      setPrevPage(nextPage)
     }
 
     setLoading(() => false)
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setQuery(e.target.value)
-  }
 
   const handleRadio = (value : string): void => {
     setFilter(value)
@@ -143,28 +140,42 @@ export default function Home() {
     return (<div key={i}>{elements}</div>)
   })
 
-  const handleNext = async (page: string) => {
+  const handleNext = async () => {
     const test = process.env.NODE_ENV === 'test';
     const server = test ? 'http://localhost:3000' : '';
 
     let url: string = `${server}/api/${filter}`
-    url = `${url}/?${page}`
+    url = `${url}/?page=${nextPage}`
 
     setLoading(() => true)
     const data = await getData(url)
-    // eslint-disable-next-line no-console
-    console.log({data})
     setData(() => data )
     if (data.next) {
-      setPage((data.next).split('?')[1])
+      setNextPage(() => Number((data.next).split('=')[1]))
+      setPrevPage(() => nextPage)
     }
-
     setLoading(() => false)
-
-
-    
-
   }
+
+  const handlePrevious = async () => {
+    const test = process.env.NODE_ENV === 'test';
+    const server = test ? 'http://localhost:3000' : '';
+
+    let url: string = `${server}/api/${filter}`
+    url = `${url}/?page=${prevPage}`
+
+    setLoading(() => true)
+    const data = await getData(url)
+    setData(() => data )
+    setNextPage(() => nextPage)
+    setPrevPage(() => prevPage - 1)
+    setLoading(() => false)
+  }
+
+  useEffect(() => {
+// eslint-disable-next-line no-console
+console.log({nextPage, prevPage})
+  })
 
   return (
     <main className={styles.main}>
@@ -188,8 +199,8 @@ export default function Home() {
           </div>
           {data?.next ? 
           <div style={{display: 'flex', justifyContent: 'center'}}>
-            <Button type="button" className={styles.button} onClick={() => handleNext(page)}>Next</Button>
-            {/* <Button type="submit" className={styles.button} onClick={() => handleNext(page)}>Previous</Button> */}
+            <Button type="button" className={styles.button} onClick={handlePrevious}>Previous</Button>
+            <Button type="button" className={styles.button} onClick={handleNext}>Next</Button>
 
           </div>
           : null}
