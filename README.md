@@ -9,24 +9,27 @@ For now, correct functionalities are ensured only in local environment.
 _Prerequisites: Node.js should be installed and configured in your machine._
 
 - Open a terminal and clone the repository (HTTP or SSH):
-- 
+```bash
   	git clone https://github.com/mmiglioranza22/conexa-challenge.git
 		git clone git@github.com:mmiglioranza22/conexa-challenge.git
+```
 
 - Install dependencies in root and ./api directories
-
+```bash
 		npm i
 		cd api/
 		npm i
+```
 
 - Spin the front end app in the root directory 
-
+```bash
   	npm run dev
+```
 
 - In a new terminal, spin the server in ./app 
-
+```bash
   	npm run dev
-		
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the front end app.
 Server will run in [http://localhost:8080](http://localhost:8080), you can make requests with Postman.
 
