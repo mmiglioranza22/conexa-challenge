@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import styles from './page.module.css'
 import RadioInput from '@/components/RadioInput'
 import Button from '@/components/Button'
@@ -8,7 +8,6 @@ import { SwapiCategories } from '@/types/types'
 import { Card } from '@/components/Card'
 import { CardContainer } from '@/components/CardContainer'
 import { CardDetail } from '@/components/CardDetail'
-import { normalizeModals } from '@/utils/helpers'
 
 async function getData(url:string): Promise<any> {
   const res = await fetch(url, { cache: 'no-store' })
@@ -76,7 +75,7 @@ export default function Home() {
     )
   })
 
-  const normalizeData = (data: any, type: string) => {
+  const normalizeData = useCallback((data: any, type: string) => {
     switch(type as SwapiCategories) {
       case 'films':
         return (
@@ -120,7 +119,7 @@ export default function Home() {
           </div>
           )
     }
-  } 
+  }, [])
 
   const fetchDataMemo = useMemo(() => {
     return data?.results.map((value: any, i: any) => {

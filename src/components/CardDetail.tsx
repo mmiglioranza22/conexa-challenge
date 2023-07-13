@@ -1,4 +1,3 @@
-import { SwapiCategories } from "@/types/types"
 import Button from "./Button"
 import { normalizeModals } from "@/utils/helpers"
 
