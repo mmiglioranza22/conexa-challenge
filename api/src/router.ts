@@ -17,8 +17,9 @@ router
 			method: 'GET',
 			url: req.params['0']
 		};
+		// debug
 		// eslint-disable-next-line no-console
-		console.log({params: req.params})
+		// console.log({params: req.params})
 		res.send(await apiRequest(config))
   });
 

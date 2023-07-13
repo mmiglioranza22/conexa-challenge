@@ -46,8 +46,6 @@ export default function Home() {
     const data = await getData(url)
     setData(() => data )
     setLoading(() => false)
-    // eslint-disable-next-line no-console
-    console.log({data})
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -132,7 +130,7 @@ export default function Home() {
         </div>
       )
     })
-  }, [data])
+  }, [data, filter, normalizeData])
 
   const fetchData = data?.results.map((value: any, i: any) => {
     const elements = normalizeData(value, filter)
