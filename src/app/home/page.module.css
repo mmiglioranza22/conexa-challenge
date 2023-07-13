@@ -131,9 +131,10 @@ align-items: center;
   min-width: 40vw;
   min-height: 40vh;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /** Adding flex to dialog opens the dialog */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   font-size: 1rem;
   background: rgba(255,255,255,0.5);
   font-family: inherit;
@@ -142,8 +143,8 @@ align-items: center;
   background-color: #000;
   color: #FFF;
   border-radius: 1rem;
-
 }
+
 .dialog::backdrop{
   background-color: rgba(0, 0, 0, 0.3);
 }

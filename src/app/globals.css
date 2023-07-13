@@ -72,3 +72,7 @@ label {
 	position: relative;
   opacity: 1;
 }
+
+p {
+  padding: 0.5rem;
+}

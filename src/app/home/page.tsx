@@ -8,7 +8,7 @@ import { SwapiCategories } from '@/types/types'
 import { Card } from '@/components/Card'
 import { CardContainer } from '@/components/CardContainer'
 import { CardDetail } from '@/components/CardDetail'
-// import { CardContainer } from '@/components/CardContainer'
+import { normalizeModals } from '@/utils/helpers'
 
 async function getData(url:string): Promise<any> {
   const res = await fetch(url, { cache: 'no-store' })
@@ -83,9 +83,18 @@ export default function Home() {
       case 'films':
         return (
           <>
-            <Card className={styles.card} onClick={() => toggleDialog(data.title)}>Title: {data.title}</Card>
-            <CardDetail className={styles} id={data.title} type={type}>
-              {data}
+            <Card
+              className={styles.card}
+              onClick={() => toggleDialog(data.title)}
+            >
+              Title: {data.title}
+            </Card>
+            <CardDetail
+              className={styles}
+              id={data.title}
+              type={type}
+              onClick={toggleDialog}>
+                {data}
             </CardDetail>
           </>
         )
@@ -95,12 +104,22 @@ export default function Home() {
       case 'species':
       case 'planets':
         return (
-          <>
-            <Card className={styles.card} onClick={() => toggleDialog(data.name)}>Name: {data.name}</Card>
-            <CardDetail className={styles} id={data.name} type={type}>
+          <div>
+            <Card
+              className={styles.card}
+              onClick={() => toggleDialog(data.name)}
+            >
+              Name: {data.name}
+            </Card>
+            <CardDetail
+              className={styles}
+              id={data.name}
+              type={type}
+              onClick={toggleDialog}
+            >
               {data}
             </CardDetail>
-          </>
+          </div>
           )
     }
   } 
@@ -136,8 +155,6 @@ export default function Home() {
               value={query}
             /> */}
           </form>
-          {/* <CardContainer type={filter} className={''}>
-          </CardContainer> */}
           <div className={styles.card_container}>
             {isLoading ? <Loading className={styles.loading} /> 
               :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
