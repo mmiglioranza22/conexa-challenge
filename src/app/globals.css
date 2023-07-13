@@ -34,6 +34,7 @@ a {
 
 /* https://codepen.io/w3programmings/pen/zzRKpy */
 input[type="radio"] {
+  font-family: inherit;
   display: none;
 }
 

@@ -36,6 +36,8 @@ color: #FFF;
 border: none;
 justify-content: center;
 align-items: center;
+
+  font-family: inherit;
 }
 
 .radio_button:focus {
