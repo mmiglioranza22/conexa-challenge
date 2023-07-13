@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import styles from './page.module.css'
 import RadioInput from '@/components/RadioInput'
 import Button from '@/components/Button'
@@ -45,10 +45,8 @@ export default function Home() {
     const data = await getData(url)
     setData(() => data )
     if (data.next) {
-      // eslint-disable-next-line no-console
-      console.log('submit !!!')
       setNextPage(() => Number((data.next).split('=')[1]))
-      setPrevPage(nextPage)
+      setPrevPage(prevPage)
     }
 
     setLoading(() => false)
@@ -150,9 +148,11 @@ export default function Home() {
     setLoading(() => true)
     const data = await getData(url)
     setData(() => data )
-    if (data.next) {
+    if (data?.next) {
       setNextPage(() => Number((data.next).split('=')[1]))
-      setPrevPage(() => nextPage)
+      setPrevPage(() => Number((data.previous).split('=')[1]))
+    } else {
+      setPrevPage(()=> prevPage + 1)
     }
     setLoading(() => false)
   }
@@ -162,20 +162,20 @@ export default function Home() {
     const server = test ? 'http://localhost:3000' : '';
 
     let url: string = `${server}/api/${filter}`
-    url = `${url}/?page=${prevPage-1}`
+    url = `${url}/?page=${prevPage}`
 
     setLoading(() => true)
     const data = await getData(url)
     setData(() => data )
-    setNextPage(() => nextPage)
-    setPrevPage(() => prevPage - 1)
+    if (data?.previous) {
+      setNextPage(() => Number((data.next).split('=')[1]))
+      setPrevPage(() => Number((data.previous).split('=')[1]))
+    } else {
+      setNextPage(() => nextPage - 1)
+    }
     setLoading(() => false)
   }
 
-  useEffect(() => {
-// eslint-disable-next-line no-console
-console.log({nextPage, prevPage})
-  })
 
   return (
     <main className={styles.main}>
@@ -197,13 +197,10 @@ console.log({nextPage, prevPage})
             {isLoading ? <Loading className={styles.loading} /> 
               :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
           </div>
-          {data?.next ? 
           <div style={{display: 'flex', justifyContent: 'center'}}>
-            <Button type="button" className={styles.button} onClick={handlePrevious}>Previous</Button>
-            <Button type="button" className={styles.button} onClick={handleNext}>Next</Button>
-
+            { data?.previous ? <Button type="button" className={styles.button} onClick={handlePrevious}>Previous</Button> : null }
+            { data?.next ? <Button type="button" className={styles.button} onClick={handleNext}>Next</Button> : null }
           </div>
-          : null}
         </div>
       </div>
     </main>
