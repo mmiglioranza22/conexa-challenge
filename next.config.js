@@ -4,11 +4,11 @@ const nextConfig = {
     return [
       {
         source: '/api',
-        destination: 'https://conexa-challenge-server-21913d323079.herokuapp.com/',
+        destination: 'http://localhost:8080',
       },
       {
         source: '/api/:slug',
-        destination: 'https://conexa-challenge-server-21913d323079.herokuapp.com/:slug', // Matched parameters can be used in the destination
+        destination: 'http://localhost:8080/:slug', // Matched parameters can be used in the destination
       },
     ]
   },
