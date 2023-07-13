@@ -45,9 +45,9 @@ export default function Home() {
     const data = await getData(url)
     setData(() => data )
     if (data.next) {
-      setNextPage(() => Number((data.next).split('=')[1]))
       // eslint-disable-next-line no-console
-      console.log({nextPage})
+      console.log('submit !!!')
+      setNextPage(() => Number((data.next).split('=')[1]))
       setPrevPage(nextPage)
     }
 
@@ -162,7 +162,7 @@ export default function Home() {
     const server = test ? 'http://localhost:3000' : '';
 
     let url: string = `${server}/api/${filter}`
-    url = `${url}/?page=${prevPage}`
+    url = `${url}/?page=${prevPage-1}`
 
     setLoading(() => true)
     const data = await getData(url)
