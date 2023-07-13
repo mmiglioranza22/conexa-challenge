@@ -1,6 +1,6 @@
 # conexa-challenge
 
-This app was built in TypeScript Next.js for its frontend components, and uses an Express app (server) to serve requests pointed to `http https://swapi.dev/api`.
+This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `http https://swapi.dev/api`.
 
 For now, correct functionalities are ensured only in local environment.
 
@@ -9,21 +9,19 @@ For now, correct functionalities are ensured only in local environment.
 _Prerequisites: Node.js should be installed and configured in your machine._
 
 - Open a terminal and clone the repository (HTTP or SSH):
-
-        git clone https://github.com/mmiglioranza22/conexa-challenge.git
-
-				git clone git@github.com:mmiglioranza22/conexa-challenge.git
+  	git clone https://github.com/mmiglioranza22/conexa-challenge.git
+		git clone git@github.com:mmiglioranza22/conexa-challenge.git
 
 - Install dependencies in root and ./api directories
 
-				npm i
-				cd api/
-				npm i
+		npm i
+		cd api/
+		npm i
 
 - Spin the front end app in the root directory 
-				npm run dev
+  	npm run dev
 - In a new terminal, spin the server in ./app 
-				npm run dev
+  	npm run dev
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the front end app.
