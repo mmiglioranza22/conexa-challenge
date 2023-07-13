@@ -194,12 +194,15 @@ export default function Home() {
             /> */}
           </form>
           <div className={styles.card_container}>
-            {isLoading ? <Loading className={styles.loading} /> 
-              :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
-          </div>
-          <div style={{display: 'flex', justifyContent: 'center'}}>
-            { data?.previous ? <Button type="button" className={styles.button} onClick={handlePrevious}>Previous</Button> : null }
-            { data?.next ? <Button type="button" className={styles.button} onClick={handleNext}>Next</Button> : null }
+            { isLoading ? <Loading className={styles.loading} /> 
+              : <>
+                  <CardContainer className={styles.card_container}>{fetchData}</CardContainer>
+                  <div style={{display: 'flex', justifyContent: 'center'}}>
+                    { data?.previous ? <Button type="button" className={styles.button} onClick={handlePrevious}>Previous</Button> : null }
+                    { data?.next ? <Button type="button" className={styles.button} onClick={handleNext}>Next</Button> : null }
+                  </div>
+                </>
+            }
           </div>
         </div>
       </div>
