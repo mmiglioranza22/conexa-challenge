@@ -150,8 +150,6 @@ export default function Home() {
     let url: string = `${server}/api/${filter}`
     url = `${url}/?${page}`
 
-    // eslint-disable-next-line no-console
-    console.log({url})
     setLoading(() => true)
     const data = await getData(url)
     // eslint-disable-next-line no-console
@@ -189,7 +187,7 @@ export default function Home() {
               :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
           </div>
           {data?.next ? 
-          <div>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
             <Button type="button" className={styles.button} onClick={() => handleNext(page)}>Next</Button>
             {/* <Button type="submit" className={styles.button} onClick={() => handleNext(page)}>Previous</Button> */}
 
