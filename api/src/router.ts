@@ -13,13 +13,16 @@ const router = Router();
 router
   .route('*')
   .get(async (req: Request, res: Response) => {
+
+		const url = Object.keys(req.query).length > 0 ? `${req.params[0]}/?page=${req.query.page}` : req.params['0'] 
+		// eslint-disable-next-line no-console
+		console.log({url, q: req.query})
 		const config: AxiosRequestConfig = {
 			method: 'GET',
-			url: req.params['0']
+			url: url,
 		};
 		// debug
 		// eslint-disable-next-line no-console
-		// console.log({params: req.params})
 		res.send(await apiRequest(config))
   });
 

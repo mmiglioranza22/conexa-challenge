@@ -22,6 +22,7 @@ export default function Home() {
   const [query, setQuery] = useState<string>('')
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(false)
+  const [page, setPage] = useState<string>('')
 
   const ROUTES: SwapiCategories[] = [
     'films',
@@ -46,6 +47,10 @@ export default function Home() {
     setLoading(() => true)
     const data = await getData(url)
     setData(() => data )
+    if (data.next) {
+      setPage((data.next).split('?')[1])
+    }
+
     setLoading(() => false)
   }
 
@@ -133,10 +138,35 @@ export default function Home() {
   //   })
   // }, [data, filter, normalizeData])
 
-  const fetchData = data?.results.map((value: any, i: any) => {
+  const fetchData = data?.results?.map((value: any, i: any) => {
     const elements = normalizeData(value, filter)
     return (<div key={i}>{elements}</div>)
   })
+
+  const handleNext = async (page: string) => {
+    const test = process.env.NODE_ENV === 'test';
+    const server = test ? 'http://localhost:3000' : '';
+
+    let url: string = `${server}/api/${filter}`
+    url = `${url}/?${page}`
+
+    // eslint-disable-next-line no-console
+    console.log({url})
+    setLoading(() => true)
+    const data = await getData(url)
+    // eslint-disable-next-line no-console
+    console.log({data})
+    setData(() => data )
+    if (data.next) {
+      setPage((data.next).split('?')[1])
+    }
+
+    setLoading(() => false)
+
+
+    
+
+  }
 
   return (
     <main className={styles.main}>
@@ -158,6 +188,13 @@ export default function Home() {
             {isLoading ? <Loading className={styles.loading} /> 
               :<CardContainer className={styles.card_container}>{fetchData}</CardContainer>}
           </div>
+          {data?.next ? 
+          <div>
+            <Button type="button" className={styles.button} onClick={() => handleNext(page)}>Next</Button>
+            {/* <Button type="submit" className={styles.button} onClick={() => handleNext(page)}>Previous</Button> */}
+
+          </div>
+          : null}
         </div>
       </div>
     </main>
