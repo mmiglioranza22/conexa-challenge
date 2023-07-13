@@ -121,15 +121,15 @@ export default function Home() {
     }
   }, [])
 
-  const fetchDataMemo = useMemo(() => {
-    return data?.results.map((value: any, i: any) => {
-      return (
-        <div key={i}>
-          {normalizeData(value, filter)}
-        </div>
-      )
-    })
-  }, [data, filter, normalizeData])
+  // const fetchDataMemo = useMemo(() => {
+  //   return data?.results.map((value: any, i: any) => {
+  //     return (
+  //       <div key={i}>
+  //         {normalizeData(value, filter)}
+  //       </div>
+  //     )
+  //   })
+  // }, [data, filter, normalizeData])
 
   const fetchData = data?.results.map((value: any, i: any) => {
     const elements = normalizeData(value, filter)
