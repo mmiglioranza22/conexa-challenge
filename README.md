@@ -1,6 +1,6 @@
 # conexa-challenge
 
-This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `http https://swapi.dev/api`.
+This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `https://swapi.dev/api`.
 
 For now, correct functionalities are ensured only in local environment (development).
 
