@@ -1,4 +1,4 @@
-# conexa-challenge
+# [conexa-challenge](https://conexatech.notion.site/Full-Stack-Node-React-5eae96ec04eb43b88d57710545042071)
 
 This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `https://swapi.dev/api`.
 
