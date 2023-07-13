@@ -11,14 +11,14 @@ _Prerequisites: Node.js should be installed and configured in your machine._
 - Open a terminal and clone the repository (HTTP or SSH):
 ```bash
   	git clone https://github.com/mmiglioranza22/conexa-challenge.git
-		git clone git@github.com:mmiglioranza22/conexa-challenge.git
+	git clone git@github.com:mmiglioranza22/conexa-challenge.git
 ```
 
 - Install dependencies in root and ./api directories
 ```bash
-		npm i
-		cd api/
-		npm i
+	npm i
+	cd api/
+	npm i
 ```
 
 - Spin the front end app in the root directory 
