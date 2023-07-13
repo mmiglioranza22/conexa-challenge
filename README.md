@@ -31,12 +31,11 @@ _Prerequisites: Node.js should be installed and configured in your machine._
   	npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the front end app.
-Server will run in [http://localhost:8080](http://localhost:8080), you can make requests with Postman.
+Server will run in [http://localhost:8080](http://localhost:8080) (you can make requests with Postman if you wish, with the same format used by SWApi).
 
 ## Tests
 
-Tests remain very basic, I could not work around handling asynchronisity in Jest / RTL. I will be working on this eventually.
-
+Tests in remain very basic, I could not work around handling asynchronisity in Jest / RTL. I will be working on this eventually.
 
 ## Deployment
 
