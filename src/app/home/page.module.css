@@ -29,14 +29,13 @@
 }
 
 .radio_button {
-display: flex;
-flex-wrap: wrap;
-background: transparent;
-color: #FFF;
-border: none;
-justify-content: center;
-align-items: center;
-
+  display: flex;
+  flex-wrap: wrap;
+  background: transparent;
+  color: #FFF;
+  border: none;
+  justify-content: center;
+  align-items: center;
   font-family: inherit;
 }
 
