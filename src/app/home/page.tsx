@@ -10,7 +10,7 @@ import { CardContainer } from '@/components/CardContainer'
 import { CardDetail } from '@/components/CardDetail'
 
 async function getData(url:string): Promise<any> {
-  const res = await fetch(url, { cache: 'no-store' })
+  const res = await fetch(url)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -34,12 +34,14 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
+    const test = process.env.NODE_ENV === 'test';
+    const server = test ? 'http://localhost:3000' : '';
 
-    let url: string = `/api/${filter}`
+    let url: string = `${server}/api/${filter}`
     
-    if (query.length > 0) {
-      url = `${url}/?search=${query}`
-    }
+    // if (query.length > 0) {
+    //   url = `${url}/?search=${query}`
+    // }
 
     setLoading(() => true)
     const data = await getData(url)

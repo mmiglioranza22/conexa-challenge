@@ -11,7 +11,8 @@ export default function RadioInput({ value, onChange, checked, onClick }:
         type="radio" 
         name="filter" 
         checked={checked} 
-        id={value} 
+        id={value}
+        data-testid={value}
         value={value} 
         onChange={onChange} 
         onClick={onClick}

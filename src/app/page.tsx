@@ -12,7 +12,7 @@ export default function Landing() {
         <GreetingMsg className={`${styles.message} fade_in`}>
           <p>Lord Vader was expecting you</p>
         </GreetingMsg>
-        <Button type='button' className={`${styles.button} fade_in`}>
+        <Button type='button' data-testid='login' className={`${styles.button} fade_in`}>
           <Link href={'/home'}>Execute order</Link>
         </Button>
       </div>
