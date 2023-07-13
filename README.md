@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# conexa-challenge
 
-## Getting Started
+This app was built in TypeScript Next.js for its frontend components, and uses an Express app (server) to serve requests pointed to `http https://swapi.dev/api`.
 
-First, run the development server:
+For now, correct functionalities are ensured only in local environment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Instructions to run this app locally:
+
+_Prerequisites: Node.js should be installed and configured in your machine._
+
+- Open a terminal and clone the repository (HTTP or SSH):
+
+        git clone https://github.com/mmiglioranza22/conexa-challenge.git
+
+				git clone git@github.com:mmiglioranza22/conexa-challenge.git
+
+- Install dependencies in root and ./api directories
+
+				npm i
+				cd api/
+				npm i
+
+- Spin the front end app in the root directory 
+				npm run dev
+- In a new terminal, spin the server in ./app 
+				npm run dev
+
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the front end app.
+Server will run in [http://localhost:8080](http://localhost:8080), you can make requests with Postman.
+
+
+## Deployment
+
+Front end deploy ->  [link to site](https://conexa-challenge-omega.vercel.app/)
+
+Back end deploy -> Pending
+
+_Custom servers for Next.js apps have their specific caveats which, unfortunately, I have not been able to sort out for the time being. (I had to create a [new repo](https://github.com/mmiglioranza22/conexa-challenge-server) with the ./api directory exclusively to be able to deploy it separately. Once I get enought insight and fix this, the url will be placed here (and linked in the front end app). Any suggestions are welcome and much appreciated_
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
