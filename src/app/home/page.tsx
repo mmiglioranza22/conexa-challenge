@@ -4,9 +4,10 @@ import styles from './page.module.css'
 import RadioInput from '@/components/RadioInput'
 import Button from '@/components/Button'
 import Loading from './loading'
-import { SwapiResponse } from '@/types/types'
+import { SwapiCategories } from '@/types/types'
 import { Card } from '@/components/Card'
 import { CardContainer } from '@/components/CardContainer'
+import { CardDetail } from '@/components/CardDetail'
 // import { CardContainer } from '@/components/CardContainer'
 
 async function getData(url:string): Promise<any> {
@@ -18,13 +19,12 @@ async function getData(url:string): Promise<any> {
 }
 
 export default function Home() {
+  const [filter, setFilter] = useState<string>('')
+  const [query, setQuery] = useState<string>('')
+  const [data, setData] = useState<any>()
+  const [isLoading, setLoading] = useState<boolean>(false)
 
-const [filter, setFilter] = useState<string>('')
-const [query, setQuery] = useState<string>('')
-const [data, setData] = useState<any>()
-const [isLoading, setLoading] = useState<boolean>(false)
-
-  const ROUTES: SwapiResponse[] = [
+  const ROUTES: SwapiCategories[] = [
     'films',
     'people',
     'planets',
@@ -42,8 +42,6 @@ const [isLoading, setLoading] = useState<boolean>(false)
       url = `${url}/?search=${query}`
     }
 
-    // eslint-disable-next-line no-console
-    // console.log({url})
     setLoading(() => true)
     const data = await getData(url)
     setData(() => data )
@@ -61,11 +59,7 @@ const [isLoading, setLoading] = useState<boolean>(false)
   }
 
   const toggleDialog = (id: string) => {
-    // eslint-disable-next-line no-console
-    console.log('toggle')
     const dialog = document.getElementById(`${id}`) as HTMLDialogElement
-    // eslint-disable-next-line no-console
-    console.log({dialog})
     if (dialog?.open) {
       dialog.close()
     } else {
@@ -85,15 +79,14 @@ const [isLoading, setLoading] = useState<boolean>(false)
   })
 
   const normalizeData = (data: any, type: string) => {
-    switch(type as SwapiResponse) {
+    switch(type as SwapiCategories) {
       case 'films':
         return (
           <>
             <Card className={styles.card} onClick={() => toggleDialog(data.title)}>Title: {data.title}</Card>
-            <dialog id={data.title}>
-              {data.title}
-              <Button type='button' className={''} onClick={() => toggleDialog(data.title)}>Close</Button>
-            </dialog>
+            <CardDetail className={styles} id={data.title} type={type}>
+              {data}
+            </CardDetail>
           </>
         )
       case 'people':
@@ -104,10 +97,9 @@ const [isLoading, setLoading] = useState<boolean>(false)
         return (
           <>
             <Card className={styles.card} onClick={() => toggleDialog(data.name)}>Name: {data.name}</Card>
-            <dialog id={data.name}>
-              {data.title}
-              <Button type='button' className={''} onClick={() => toggleDialog(data.name)}>Close</Button>
-            </dialog>
+            <CardDetail className={styles} id={data.name} type={type}>
+              {data}
+            </CardDetail>
           </>
           )
     }

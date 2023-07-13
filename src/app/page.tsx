@@ -13,9 +13,7 @@ export default function Landing() {
           <p>Lord Vader was expecting you</p>
         </GreetingMsg>
         <Button type='button' className={`${styles.button} fade_in`}>
-          <Link href={'/home'}> 
-          Execute order
-          </Link>
+          <Link href={'/home'}>Execute order</Link>
         </Button>
       </div>
     </main>

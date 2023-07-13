@@ -1,1 +1,1 @@
-export type SwapiResponse = 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles'
+export type SwapiCategories = 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles'

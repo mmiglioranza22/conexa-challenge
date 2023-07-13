@@ -7,8 +7,6 @@
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: inset 0px -25px 90px 90px #000;
-
-
 }
 
 .nav {
@@ -38,13 +36,13 @@ color: #FFF;
 border: none;
 justify-content: center;
 align-items: center;
-
 }
+
 .radio_button:focus {
   outline: none
 }
 
-.button .card {
+.button, .card {
 	background: transparent;
 	height: fit-content;
 	color: inherit;
@@ -107,15 +105,13 @@ align-items: center;
   position: relative;
   display: inline-block;
   border: none;
-  padding: 1rem
-  
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .card:hover {
   border: none
 }
-
-
 
 @keyframes rotation {
   from {
@@ -128,8 +124,26 @@ align-items: center;
 
 .loading {
   animation: rotation 5s infinite linear;
-  
-
 }
 
+.dialog {
+  margin: auto;
+  min-width: 40vw;
+  min-height: 40vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.5);
+  font-family: inherit;
+  border-radius: 0px;
+  padding: 10px;
+  background-color: #000;
+  color: #FFF;
+  border-radius: 1rem;
 
+}
+.dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.3);
+}
