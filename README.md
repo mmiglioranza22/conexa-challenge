@@ -2,7 +2,7 @@
 
 This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `https://swapi.dev/api`.
 
-For now, correct functionalities are ensured only in local environment (development).
+App can be try out in the link above or locally (dev environment).
 
 ## Instructions to run this app locally:
 
@@ -43,5 +43,5 @@ Front end deploy ->  [link to site](https://conexa-challenge-omega.vercel.app/)
 
 Back end deploy -> [link to site](https://conexa-challenge-server-4327208ecb73.herokuapp.com/)
 
-_Custom servers for Next.js apps have their specific caveats which, unfortunately, I have not been able to sort out for the time being. (I had to create a [new repo](https://github.com/mmiglioranza22/conexa-challenge-server) with the ./api directory exclusively to be able to deploy it separately. Once I get enought insight and fix this, the url will be placed here (and linked in the front end app). Any suggestions are welcome and much appreciated_
+_Custom servers for Next.js apps have their specific caveats which require the server app to be decoupled from the frontend. Server was cloned from `./api` directory in a separate [repository](https://github.com/mmiglioranza22/conexa-challenge-server) exclusively for deployment in Heroku. Any suggestions to do this with a different workaround are welcome and much appreciated_
 
