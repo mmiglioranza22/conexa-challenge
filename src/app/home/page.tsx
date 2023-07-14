@@ -108,7 +108,7 @@ export default function Home() {
               className={styles.card}
               onClick={() => toggleDialog(data.name)}
             >
-              Name: {data.name}
+             Name: {data.name}
             </Card>
             <CardDetail
               className={styles}
@@ -180,7 +180,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.nav}>
-        <div style={{height: 'auto'}}>
+        <div style={{height: 'auto', display:'flex', flexDirection: 'column', alignItems:'center'}}>
           <form className={styles.form} method='GET' action='/api' onSubmit={handleSubmit}>
             <div className={styles.links}>
               <Button type="submit" className={styles.radio_button}>{filterOptions}</Button>
