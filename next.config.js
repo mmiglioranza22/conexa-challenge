@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	async rewrites() {
+    const server = process.env.NODE_ENV != 'dev' ? 'https://conexa-challenge-server-4327208ecb73.herokuapp.com/' : 'http://localhost:8080';
     return [
       {
         source: '/api',
-        destination: 'http://localhost:8080',
+        destination: `${server}`,
       },
       {
         source: '/api/:slug',
-        destination: 'http://localhost:8080/:slug', // Matched parameters can be used in the destination
+        destination: `${server}/:slug`, // Matched parameters can be used in the destination
       },
     ]
   },
