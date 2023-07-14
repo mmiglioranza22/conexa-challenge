@@ -41,7 +41,7 @@ Tests in remain very basic, I could not work around handling asynchronisity in J
 
 Front end deploy ->  [link to site](https://conexa-challenge-omega.vercel.app/)
 
-Back end deploy -> Pending
+Back end deploy -> [link to site](https://conexa-challenge-server-4327208ecb73.herokuapp.com/)
 
 _Custom servers for Next.js apps have their specific caveats which, unfortunately, I have not been able to sort out for the time being. (I had to create a [new repo](https://github.com/mmiglioranza22/conexa-challenge-server) with the ./api directory exclusively to be able to deploy it separately. Once I get enought insight and fix this, the url will be placed here (and linked in the front end app). Any suggestions are welcome and much appreciated_
 
