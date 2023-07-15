@@ -35,7 +35,7 @@ Server will run in [http://localhost:8080](http://localhost:8080) (you can make 
 
 ## Tests
 
-Tests in remain very basic, I could not work around handling asynchronisity in Jest / RTL. I will be working on this eventually.
+Tests still remain very basic, I could not work around handling asynchronisity in Jest / RTL for the time being. I will be working on this eventually.
 
 ## Deployment
 
