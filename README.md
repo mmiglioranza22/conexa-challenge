@@ -3,7 +3,8 @@
 This app was built entirely in TypeScript: with Next.js for its frontend components and Express (server) to serve requests pointed to `https://swapi.dev/api`.
 
 App can be try out in this [link](https://conexa-challenge-omega.vercel.app/) or locally (dev environment).
-**NOTE: 20/04/24 -> deployed link no longer available due to Heroku's payment policies**
+
+*NOTE: 20/04/24 -> deployed link no longer available due to Heroku's payment policies*
 
 ## Instructions to run this app locally:
 
